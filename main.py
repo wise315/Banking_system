@@ -9,7 +9,8 @@ def main():
             if not bank.current_user:
                 # Main Menu (Logged Out)
                 print("\n1. Create Account\n2. Login\n3. Exit")
-                choice = input("Select an option (1-3): ").strip()
+                # Enforce numeric inputs even for menus
+                choice = bank.secure_input("Select an option (1-3): ", expected_type="numeric_string")
                 
                 if choice == "1":
                     bank.create_account()
@@ -24,7 +25,7 @@ def main():
                 # User Menu (Logged In)
                 print(f"\n--- User Menu (Logged in as #{bank.current_user}) ---")
                 print("1. View Balance\n2. Deposit Money\n3. Withdraw Money\n4. Transfer Funds\n5. Transaction Summary\n6. Logout")
-                choice = input("Select an option (1-6): ").strip()
+                choice = bank.secure_input("Select an option (1-6): ", expected_type="numeric_string")
 
                 if choice == "1":
                     bank.view_balance()
